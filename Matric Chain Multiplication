@@ -1,0 +1,59 @@
+#include<stdio.h>
+#include<conio.h>
+#define inf 9999
+void matrix_chain_multiplication(int p[],int n,int X[11][11],int Y[11][11])
+{
+ int i,j,k,l,q;
+ for(l=2;l<=n;l++)
+ {
+ for(i=1;i<=n-1l+1;i++)
+ {
+ j=i+l-1;
+ X[i][j]=inf;
+ for(k=1;k<=j-1;k++)
+ {
+ q=X[i][k] + X[k+1][j]+p[i-1]*p[k]*p[j];
+ if(q<X[i][j])
+ {
+X[i][j]=q;
+Y[i][j]=k;
+ }
+ }
+ }
+ }
+}
+void putdata(int S[11][11],int row,int column)
+{
+ int i,j;
+ for(i=1;i<=row;i++)
+ {
+for(j=1;j<=column;j++)
+{
+ printf("%d\t",S[i][j]);
+}
+printf("\n");
+ }
+}
+void main()
+{
+int X[11][11],Y[11][11],i,n,j,p[11];
+for(i=0;i<=10;i++)
+{
+ for(j=0;j<=10;j++)
+ {
+ X[i][j]=0;
+ Y[i][j]=0;
+ }
+ p[i]=0;
+}
+printf("enter total number of matrices:");
+scanf("%d",&n);
+printf("enter chain of matrice:");
+for(i=0;i<=n;i++)
+ scanf("%d",&p[i]);
+ matrix_chain_multiplication(p,n,X,Y);
+printf("\noutput");
+putdata(X,n,n);
+printf("\noutput");
+putdata(Y,n,n);
+}
