@@ -1,0 +1,123 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+void LCS_length(char x[50],char y[50],int c[51][51],char b[51][51],int
+m,int n)
+{
+ int i,j;
+ for(i=1;i<=m;i++)
+ {
+ for(j=1;j<=n;j++)
+ {
+ if(x[i-1]==y[j-1])
+ {
+ c[i][j]=c[i-1][j-1]+1;
+ b[i][j]=92;
+ }
+ else if(c[i-1][j]>=c[i][j-1])
+ {
+ c[i][j]=c[i-1][j];
+ b[i][j]='^';
+ }
+ else
+ {
+ c[i][j]=c[i][j-1];
+ b[i][j]='<';
+ }
+ }
+ }
+}
+void put_data1(char a[51][51],int m,int n)
+{
+ int i,j;
+ for(i=1;i<=m;i++)
+ {
+ for(j=1;j<=n;j++)
+ {
+ printf(" %c",a[i][j]);
+ }
+ printf("\n");
+ }
+}
+void put_data(int a[51][51],int m,int n)
+{
+ int i,j;
+ for(i=1;i<=m;i++)
+ {
+ for(j=1;j<=n;j++)
+ {
+ printf("%d",a[i][j]);
+ }
+ printf("\n");
+ }
+}
+int main()
+{
+ int i,j,m,n;
+ char A[50];
+ b[i][j]=92;
+ }
+ else if(c[i-1][j]>=c[i][j-1])
+ {
+ c[i][j]=c[i-1][j];
+ b[i][j]='^';
+ }
+ else
+ {
+ c[i][j]=c[i][j-1];
+ b[i][j]='<';
+ }
+ }
+ }
+}
+void put_data1(char a[51][51],int m,int n)
+{
+ int i,j;
+ for(i=1;i<=m;i++)
+ {
+ for(j=1;j<=n;j++)
+ {
+ printf(" %c",a[i][j]);
+ }
+ printf("\n");
+ }
+}
+void put_data(int a[51][51],int m,int n)
+{
+ int i,j;
+ for(i=1;i<=m;i++)
+ {
+ for(j=1;j<=n;j++)
+ {
+ printf("%d",a[i][j]);
+ }
+ printf("\n");
+ }
+}
+int main()
+{
+ int i,j,m,n;
+ char A[50];
+ char B[50];
+ int c[51][51];
+ char b[51][51];
+ printf("Enter first string:");
+ scanf("%s",A);
+ printf("\nEnter second string:");
+ scanf("%s",B);
+ m=strlen(A);
+ n=strlen(B);
+ for(i=1;i<=m;i++)
+ {
+ c[i][0]=0;
+ }
+ for(j=1;j<=n;j++)
+ {
+ c[0][j]=0;
+ }
+ LCS_length(A,B,c,b,m,n);
+ printf("Output:\n");
+ put_data(c,m,n);
+ put_data1(b,m,n);
+ return 0;
+}
